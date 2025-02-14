@@ -1,0 +1,22 @@
+$schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
+type: pipeline
+description: "Pipeline IDS Hybride - Prétraitement + Entraînement"
+experiment_name: Hybrid-IDS-Training
+compute: azureml:ClusterIDS
+
+jobs:
+  preprocess:
+    type: command
+    component: azureml:preprocess_data@latest
+    inputs:
+      raw_data: azureml:ids-dataset@latest
+    outputs:
+      preprocessed_data: 
+
+  train:
+    type: command
+    component: azureml:train_model@latest
+    inputs:
+      processed_data: ${{parent.jobs.preprocess.outputs.preprocessed_data}}
+    outputs:
+      model: ${{parent.outputs.model}}
