@@ -9,7 +9,9 @@ jobs:
     type: command
     component: azureml:preprocess_data@latest
     inputs:
-      raw_data: azureml:ids-dataset@latest
+      raw_data:
+        type: uri_file
+        path: azureml:dataset-kdd:1
     outputs:
       preprocessed_data: 
 
