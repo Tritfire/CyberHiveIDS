@@ -11,7 +11,7 @@ jobs:
     inputs:
       raw_data:
         type: uri_file
-        path: azureml:dataset-kdd:1
+        path: azureml:dataset_honeytrap:1
     outputs:
       preprocessed_data: 
 

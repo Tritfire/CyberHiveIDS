@@ -1,14 +1,17 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: train_model
+display_name: Train IDS Models
+version: 1
 type: command
-description: "Entraînement du modèle IDS - RandomForest + IsolationForest"
 inputs:
-  processed_data:
-    type: uri_file
+  input_data:
+    type: uri_folder
 outputs:
-  model:
+  output_model:
     type: uri_folder
 code: .
-command: > 
-  python train.py --input_data ${{inputs.processed_data}} --output_model ${{outputs.model}}
 environment: azureml:sklearn-env:1
+command: >-
+  python train.py
+  --input_data ${{inputs.input_data}}
+  --output_model ${{outputs.output_model}}
