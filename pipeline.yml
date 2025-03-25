@@ -1,24 +1,24 @@
 $schema: https://azuremlschemas.azureedge.net/latest/pipelineJob.schema.json
 type: pipeline
-description: "Pipeline IDS Hybride - Prétraitement + Entraînement"
-experiment_name: Hybrid-IDS-Training
-compute: azureml:ClusterIDS
+experiment_name: ids-pipeline
+description: Pipeline IDS - Preprocessing + Training
+compute: azureml:clusterids
 
 jobs:
-  preprocess:
+  preprocess_data:
     type: command
-    component: azureml:preprocess_data@latest
+    component: ./preprocess_component.yml
     inputs:
-      raw_data:
-        type: uri_file
-        path: azureml:dataset_honeytrap:1
+      raw_data: azureml:dataset_honeytrap:1  # ✅ Lien direct vers le dataset
     outputs:
-      preprocessed_data: 
+      preprocessed_data:
+        mode: rw_mount
 
-  train:
+  train_model:
     type: command
-    component: azureml:train_model@latest
+    component: ./train_component.yml
     inputs:
-      processed_data: ${{parent.jobs.preprocess.outputs.preprocessed_data}}
+      input_data: ${{parent.jobs.preprocess_data.outputs.preprocessed_data}}
     outputs:
-      model: ${{parent.outputs.model}}
+      output_model:
+        mode: rw_mount

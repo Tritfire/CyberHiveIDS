@@ -1,14 +1,17 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: train_model
 display_name: Train IDS Models
-version: 2025-03-25-1
+version: 2025-03-26-1-2  # 🔁 Mets à jour à chaque modification
 type: command
+
 inputs:
   input_data:
     type: uri_folder
+
 outputs:
   output_model:
     type: uri_folder
+
 code: .
 environment: azureml:sklearn-env:1
 command: >-
