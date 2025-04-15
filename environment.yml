@@ -1,12 +1,13 @@
 name: sklearn-env
 description: "Environnement Azure ML avec Scikit-learn et Pandas"
-image: mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04
+image: mcr.microsoft.com/azureml/minimal-ubuntu20.04-py39-cpu-inference:latest
 dependencies:
-  - python=3.8
+  - python=3.9
   - pip
   - pip:
+      - azureml-inference-server-http
       - azureml-defaults
-      - scikit-learn
+      - scikit-learn==1.6.1
       - pandas
-      - numpy
+      - numpy==2.0.2
       - joblib

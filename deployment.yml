@@ -1,0 +1,11 @@
+name: blue
+endpoint_name: CyberHiveIDS-Endpoint
+model: azureml:CyberHiveIDSModelV2@latest
+environment:
+  conda_file: ./conda.yml
+  image: mcr.microsoft.com/azureml/minimal-ubuntu20.04-py39-cpu-inference:latest
+code_configuration:
+  code: .
+  scoring_script: score.py
+instance_type: Standard_DS2_v2
+instance_count: 1
