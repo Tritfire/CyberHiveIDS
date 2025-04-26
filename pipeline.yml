@@ -9,7 +9,7 @@ jobs:
     type: command
     component: ./preprocess_component.yml
     inputs:
-      raw_data: azureml:dataset_honeytrap:1  # ✅ Lien direct vers le dataset
+      raw_data: azureml:dataset_honeytrap:1  # Lien direct vers le dataset
     outputs:
       preprocessed_data:
         mode: rw_mount
