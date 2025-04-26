@@ -1,7 +1,7 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandComponent.schema.json
 name: train_model
 display_name: Train IDS Models
-version: 2025-03-26-1-2  # 🔁 Mets à jour à chaque modification
+version: 2025-03-26-1-2  # Mets à jour à chaque modification
 type: command
 
 inputs:
