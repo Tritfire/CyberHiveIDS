@@ -33,7 +33,7 @@ b = 0
 if response.status_code == 200 and "predictions" in result:
     df["prediction"] = result["predictions"]
     df.to_csv("results_with_predictions.csv", index=False)
-    print("✅ Résultats enregistrés dans results_with_predictions.csv")
+    print("Résultats enregistrés dans results_with_predictions.csv")
     for i in result["predictions"]:
         if (i):
             a += 1
